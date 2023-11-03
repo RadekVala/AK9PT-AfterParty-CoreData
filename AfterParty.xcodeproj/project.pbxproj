@@ -7,18 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD28499E2AF4F073002DB78C /* DrinkIntakeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD28499D2AF4F073002DB78C /* DrinkIntakeDetailView.swift */; };
+		CD2849A02AF4F6A7002DB78C /* AddDrinkIntakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD28499F2AF4F6A7002DB78C /* AddDrinkIntakeView.swift */; };
+		CD2849A22AF4FC63002DB78C /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2849A12AF4FC63002DB78C /* Helpers.swift */; };
 		CD2976DF2AF4E64C00211D23 /* AfterPartyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2976DE2AF4E64C00211D23 /* AfterPartyApp.swift */; };
-		CD2976E12AF4E64C00211D23 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2976E02AF4E64C00211D23 /* ContentView.swift */; };
+		CD2976E12AF4E64C00211D23 /* DrinkIntakeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2976E02AF4E64C00211D23 /* DrinkIntakeListView.swift */; };
 		CD2976E32AF4E64D00211D23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD2976E22AF4E64D00211D23 /* Assets.xcassets */; };
 		CD2976E62AF4E64D00211D23 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD2976E52AF4E64D00211D23 /* Preview Assets.xcassets */; };
+		CD2976EE2AF4E68700211D23 /* DrinkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2976ED2AF4E68700211D23 /* DrinkType.swift */; };
+		CD2976F02AF4E7FD00211D23 /* DrinkIntake.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2976EF2AF4E7FD00211D23 /* DrinkIntake.swift */; };
+		CD2976F22AF4E8E100211D23 /* DrinkIntakeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2976F12AF4E8E100211D23 /* DrinkIntakeList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CD28499D2AF4F073002DB78C /* DrinkIntakeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkIntakeDetailView.swift; sourceTree = "<group>"; };
+		CD28499F2AF4F6A7002DB78C /* AddDrinkIntakeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDrinkIntakeView.swift; sourceTree = "<group>"; };
+		CD2849A12AF4FC63002DB78C /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		CD2976DB2AF4E64C00211D23 /* AfterParty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AfterParty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD2976DE2AF4E64C00211D23 /* AfterPartyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterPartyApp.swift; sourceTree = "<group>"; };
-		CD2976E02AF4E64C00211D23 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		CD2976E02AF4E64C00211D23 /* DrinkIntakeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkIntakeListView.swift; sourceTree = "<group>"; };
 		CD2976E22AF4E64D00211D23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD2976E52AF4E64D00211D23 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CD2976ED2AF4E68700211D23 /* DrinkType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkType.swift; sourceTree = "<group>"; };
+		CD2976EF2AF4E7FD00211D23 /* DrinkIntake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkIntake.swift; sourceTree = "<group>"; };
+		CD2976F12AF4E8E100211D23 /* DrinkIntakeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkIntakeList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,10 +63,14 @@
 		CD2976DD2AF4E64C00211D23 /* AfterParty */ = {
 			isa = PBXGroup;
 			children = (
+				CD2976EC2AF4E66A00211D23 /* model */,
 				CD2976DE2AF4E64C00211D23 /* AfterPartyApp.swift */,
-				CD2976E02AF4E64C00211D23 /* ContentView.swift */,
+				CD2976E02AF4E64C00211D23 /* DrinkIntakeListView.swift */,
+				CD28499D2AF4F073002DB78C /* DrinkIntakeDetailView.swift */,
+				CD28499F2AF4F6A7002DB78C /* AddDrinkIntakeView.swift */,
 				CD2976E22AF4E64D00211D23 /* Assets.xcassets */,
 				CD2976E42AF4E64D00211D23 /* Preview Content */,
+				CD2849A12AF4FC63002DB78C /* Helpers.swift */,
 			);
 			path = AfterParty;
 			sourceTree = "<group>";
@@ -65,6 +81,16 @@
 				CD2976E52AF4E64D00211D23 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CD2976EC2AF4E66A00211D23 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				CD2976ED2AF4E68700211D23 /* DrinkType.swift */,
+				CD2976EF2AF4E7FD00211D23 /* DrinkIntake.swift */,
+				CD2976F12AF4E8E100211D23 /* DrinkIntakeList.swift */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +163,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD2976E12AF4E64C00211D23 /* ContentView.swift in Sources */,
+				CD2976F02AF4E7FD00211D23 /* DrinkIntake.swift in Sources */,
+				CD2976E12AF4E64C00211D23 /* DrinkIntakeListView.swift in Sources */,
+				CD28499E2AF4F073002DB78C /* DrinkIntakeDetailView.swift in Sources */,
+				CD2849A22AF4FC63002DB78C /* Helpers.swift in Sources */,
+				CD2849A02AF4F6A7002DB78C /* AddDrinkIntakeView.swift in Sources */,
+				CD2976EE2AF4E68700211D23 /* DrinkType.swift in Sources */,
 				CD2976DF2AF4E64C00211D23 /* AfterPartyApp.swift in Sources */,
+				CD2976F22AF4E8E100211D23 /* DrinkIntakeList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

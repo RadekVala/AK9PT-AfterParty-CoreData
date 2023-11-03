@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct AfterPartyApp: App {
+    
+    @State private var drinkIntakeList: DrinkIntakeList = DrinkIntakeList()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            DrinkIntakeListView()
+                .environment(drinkIntakeList)
         }
     }
 }
