@@ -9,10 +9,22 @@ import SwiftUI
 
 struct AddDrinkIntakeView: View {
     
-    var items: DrinkIntakeList
+    // Core Data persistent context
+    @Environment(\.managedObjectContext) var viewContext
+    
+    @FetchRequest(
+        sortDescriptors: [
+            NSSortDescriptor(keyPath: \DrinkTypeEntity.name, ascending: true)
+        ]
+    ) private var drinkTypes: FetchedResults<DrinkTypeEntity>
+    
+    @State var selectedDrinkType: DrinkTypeEntity
+    
     @Binding var isPresented: Bool
-    @State var selectedDrinkId = UUID()
-    @State var drinkTypes = DrinkType.defaultDrinkTypes()
+    //@State var selectedDrinkId = UUID()
+    //@State var drinkTypes = DrinkType.defaultDrinkTypes()
+    
+    
     @State var selectedVolume: String = ""
     
     var body: some View {
@@ -20,10 +32,10 @@ struct AddDrinkIntakeView: View {
             Form {
                 Section(header: Text("Select type of drink")) {
                     VStack {
-                        Picker("Select a Drink Type", selection: $selectedDrinkId) {
+                        Picker("Select a Drink Type", selection: $selectedDrinkType) {
                             ForEach(drinkTypes , id: \.self) { drink in
-                                Text(drink.name)
-                                    .tag(drink.id)
+                                Text(drink.name ?? "Drink name not set")
+                                    .tag(drink)
                             }
                         }
                         
@@ -39,19 +51,18 @@ struct AddDrinkIntakeView: View {
             .navigationTitle("Add Drink Intake")
             .navigationBarItems(
                 trailing: Button("Save") {
+                    // save event handler
                     
                     if !selectedVolume.isEmpty {
                         
-                        let filteredDrinkTypes = drinkTypes.filter { $0.id == selectedDrinkId }
+                        let drinkIntake = DrinkIntakeEntity(context: viewContext)
+                        drinkIntake.id = UUID()
+                        drinkIntake.timestamp = Date()
+                        drinkIntake.total = 1
+                        drinkIntake.volume = decimalNumFormater(stringNumber: selectedVolume) ?? 0.0
+                        drinkIntake.drinkType = selectedDrinkType
                         
-                        
-                        
-                        let drinkIntake = DrinkIntake(
-                            total: 1,
-                            volume: decimalNumFormater(stringNumber: selectedVolume) ?? 0.0,
-                            drinkType: filteredDrinkTypes.first ?? DrinkType.defaultDrinkTypes()[0])
-                        
-                        items.drinks.append(drinkIntake)
+                        try? viewContext.save()
                          
                         isPresented = false
                     }

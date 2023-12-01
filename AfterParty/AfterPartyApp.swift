@@ -10,12 +10,14 @@ import SwiftUI
 @main
 struct AfterPartyApp: App {
     
-    @State private var drinkIntakeList: DrinkIntakeList = DrinkIntakeList()
+    //@State private var drinkIntakeList: DrinkIntakeList = DrinkIntakeList()
+    @StateObject private var dataController = DataController.shared
+    
     
     var body: some Scene {
         WindowGroup {
             DrinkIntakeListView()
-                .environment(drinkIntakeList)
+                .environment(\.managedObjectContext, dataController.container.viewContext )
         }
     }
 }

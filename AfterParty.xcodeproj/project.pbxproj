@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD1C15FD2B1A25C90015E496 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1C15FC2B1A25C90015E496 /* SettingsView.swift */; };
+		CD1C16002B1A2EEA0015E496 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CD1C15FE2B1A2EEA0015E496 /* DataModel.xcdatamodeld */; };
+		CD1C16022B1A30820015E496 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1C16012B1A30820015E496 /* DataController.swift */; };
 		CD28499E2AF4F073002DB78C /* DrinkIntakeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD28499D2AF4F073002DB78C /* DrinkIntakeDetailView.swift */; };
 		CD2849A02AF4F6A7002DB78C /* AddDrinkIntakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD28499F2AF4F6A7002DB78C /* AddDrinkIntakeView.swift */; };
 		CD2849A22AF4FC63002DB78C /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2849A12AF4FC63002DB78C /* Helpers.swift */; };
@@ -20,6 +23,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CD1C15FC2B1A25C90015E496 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		CD1C15FF2B1A2EEA0015E496 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		CD1C16012B1A30820015E496 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		CD28499D2AF4F073002DB78C /* DrinkIntakeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkIntakeDetailView.swift; sourceTree = "<group>"; };
 		CD28499F2AF4F6A7002DB78C /* AddDrinkIntakeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDrinkIntakeView.swift; sourceTree = "<group>"; };
 		CD2849A12AF4FC63002DB78C /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
@@ -66,11 +72,14 @@
 				CD2976EC2AF4E66A00211D23 /* model */,
 				CD2976DE2AF4E64C00211D23 /* AfterPartyApp.swift */,
 				CD2976E02AF4E64C00211D23 /* DrinkIntakeListView.swift */,
+				CD1C15FC2B1A25C90015E496 /* SettingsView.swift */,
 				CD28499D2AF4F073002DB78C /* DrinkIntakeDetailView.swift */,
 				CD28499F2AF4F6A7002DB78C /* AddDrinkIntakeView.swift */,
 				CD2976E22AF4E64D00211D23 /* Assets.xcassets */,
 				CD2976E42AF4E64D00211D23 /* Preview Content */,
 				CD2849A12AF4FC63002DB78C /* Helpers.swift */,
+				CD1C15FE2B1A2EEA0015E496 /* DataModel.xcdatamodeld */,
+				CD1C16012B1A30820015E496 /* DataController.swift */,
 			);
 			path = AfterParty;
 			sourceTree = "<group>";
@@ -164,8 +173,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD2976F02AF4E7FD00211D23 /* DrinkIntake.swift in Sources */,
+				CD1C16002B1A2EEA0015E496 /* DataModel.xcdatamodeld in Sources */,
 				CD2976E12AF4E64C00211D23 /* DrinkIntakeListView.swift in Sources */,
 				CD28499E2AF4F073002DB78C /* DrinkIntakeDetailView.swift in Sources */,
+				CD1C15FD2B1A25C90015E496 /* SettingsView.swift in Sources */,
+				CD1C16022B1A30820015E496 /* DataController.swift in Sources */,
 				CD2849A22AF4FC63002DB78C /* Helpers.swift in Sources */,
 				CD2849A02AF4F6A7002DB78C /* AddDrinkIntakeView.swift in Sources */,
 				CD2976EE2AF4E68700211D23 /* DrinkType.swift in Sources */,
@@ -376,6 +388,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CD1C15FE2B1A2EEA0015E496 /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CD1C15FF2B1A2EEA0015E496 /* DataModel.xcdatamodel */,
+			);
+			currentVersion = CD1C15FF2B1A2EEA0015E496 /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = CD2976D32AF4E64C00211D23 /* Project object */;
 }

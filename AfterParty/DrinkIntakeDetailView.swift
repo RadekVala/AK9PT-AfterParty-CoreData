@@ -9,13 +9,16 @@ import SwiftUI
 
 struct DrinkIntakeDetailView: View {
     
-    @Binding var drinkIntake: DrinkIntake
+    // Core Data persistent context
+    @Environment(\.managedObjectContext) var viewContext
+    
+    @ObservedObject var drinkIntake: DrinkIntakeEntity
     
     @State var alcoholIntake = 0.0
     
     var body: some View {
         VStack {
-            Text(drinkIntake.drinkType.name)
+            Text(drinkIntake.drinkType?.name ?? "Drink name not set")
                 .font(.headline)
                 .padding()
             
@@ -25,13 +28,14 @@ struct DrinkIntakeDetailView: View {
             Button("Drink one more"){
                 drinkIntake.total += 1
                 alcoholIntake = alcoholIntakeRecalculate(drinkIntake: drinkIntake)
+                try? viewContext.save()
                 
             }.buttonStyle(.borderedProminent)
             
             Text("\(alcoholIntake, specifier: "%.2f") ‰")
                            .padding()
         }
-        .navigationTitle(drinkIntake.drinkType.name)
+        .navigationTitle(drinkIntake.drinkType?.name ?? "Drink name not set")
         .onAppear {
             alcoholIntake = alcoholIntakeRecalculate(drinkIntake: drinkIntake)
         }

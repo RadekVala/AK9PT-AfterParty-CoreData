@@ -9,9 +9,27 @@ import SwiftUI
 
 struct DrinkIntakeListView: View {
     
-    @Environment(DrinkIntakeList.self) var drinkList
+    //@Environment(DrinkIntakeList.self) var drinkList
+    
+    // Core Data persistent context
+    @Environment(\.managedObjectContext) var viewContext
+    
+    // Fetch request for DrinkIntakeEntity
+    @FetchRequest(
+        sortDescriptors: [
+            NSSortDescriptor(keyPath: \DrinkIntakeEntity.timestamp, ascending: false)
+        ], animation: .default
+    ) var items: FetchedResults<DrinkIntakeEntity>
+    
+    @FetchRequest(
+        sortDescriptors: [
+            NSSortDescriptor(keyPath: \DrinkTypeEntity.name, ascending: true)
+        ]
+    ) private var drinkTypes: FetchedResults<DrinkTypeEntity>
+    
     
     @State private var showingAddSheet = false
+    @State private var showingSettingsSheet = false
     
     @State var alcoholIntake: Double = 0.0
     
@@ -19,22 +37,24 @@ struct DrinkIntakeListView: View {
     
     @State var hours: Double = 1.0
     
+    init () {
+        DataController.shared.populateInitialDataIfNeeded()
+    }
+    
     var body: some View {
-        
-        @Bindable var drinkList = drinkList
         
         NavigationView {
             VStack {
-                List($drinkList.drinks, editActions: .delete){ $drinkIntake in
-                    NavigationLink(destination: DrinkIntakeDetailView(drinkIntake: $drinkIntake)) {
-                        HStack {
-                            Text(drinkIntake.drinkType.name)
-                            Spacer()
-                            Text("\(drinkIntake.total) pcs")
+                List {
+                    ForEach(items) { item in
+                        NavigationLink(destination: DrinkIntakeDetailView(drinkIntake: item)) {
+                            HStack {
+                                Text(item.drinkType?.name ?? "Drink name not set")
+                                Spacer()
+                                Text("\(item.total) unit")
+                            }
                         }
                     }
-                    
-                    
                 }
                 
                 VStack {
@@ -51,22 +71,43 @@ struct DrinkIntakeListView: View {
                 
                 
             }.navigationTitle("AfterParty")
-                .navigationBarItems(trailing: Button(action: {
-                    print("button add pressed")
-                    showingAddSheet.toggle()
-                }){
-                    Image(systemName: "wineglass")
-                })
-                .onAppear {
-                    alcoholIntake = totalIntake(drinkList: drinkList)
+                .navigationBarItems(trailing:
+                                        
+                HStack {
+                    Button(action: {
+                        print("button settings pressed")
+                        showingSettingsSheet.toggle()
+                    }){
+                        Image(systemName: "gearshape")
+                    }
+                    Button(action: {
+                        print("button add pressed")
+                        showingAddSheet.toggle()
+                    }){
+                        Image(systemName: "wineglass")
+                    }
                 }
+                                    )
+            .onAppear {
+                alcoholIntake = totalIntake(drinkList: items)
+                alcoholIntakeInTime = promileInTime(totalPromile: alcoholIntake, hours: hours)
+            }
         }
+        //opening action sheet (popover)
         .sheet(isPresented: $showingAddSheet) {
-            AddDrinkIntakeView(items: drinkList, isPresented: $showingAddSheet)
+            if let firstDrink = drinkTypes.first {
+                AddDrinkIntakeView(selectedDrinkType: firstDrink, isPresented: $showingAddSheet)
+            }
+        }
+        // opening of SettingsView
+        .sheet(isPresented: $showingSettingsSheet) {
+            SettingsView(isPresented: $showingSettingsSheet)
         }
     }
 }
 
-#Preview {
-    DrinkIntakeListView().environment(DrinkIntakeList())
-}
+/*
+ #Preview {
+ DrinkIntakeListView().environment(DrinkIntakeList())
+ }
+ */
